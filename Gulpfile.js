@@ -249,7 +249,7 @@ function main(cb) {
 }
 
 function syncFiles(cb) {
-	fileSync(dir.inputHtml, dir.outputHtml, {
+	fileSync(dir.inputHtml, dir.output, {
 		recursive: true,
 		ignore: []
 	})
