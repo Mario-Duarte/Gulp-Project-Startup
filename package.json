@@ -1,0 +1,45 @@
+{
+    "name": "Gulp-Project-Startup",
+    "version": "1.0.0",
+    "description": "Easy and fast startup your projects with gulp.",
+    "main": "Gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "help": "gulp help"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mario-Duarte/Gulp-Project-Startup"
+    },
+    "author": "Mario Duarte",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/Mario-Duarte/Gulp-Project-Startup/issues"
+    },
+    "homepage": "https://github.com/Mario-Duarte/Gulp-Project-Startup",
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "ansi-colors": "^3.2.4",
+        "babel": "^6.23.0",
+        "dart-sass": "^1.22.10",
+        "del": "^3.0.0",
+        "fancy-log": "^1.3.3",
+        "fs-extra": "^8.1.0",
+        "gulp": "^4.0.0",
+        "gulp-autoprefixer": "^6.0.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-file-sync": "^2.0.0",
+        "gulp-if": "^2.0.2",
+        "gulp-minify": "^3.1.0",
+        "gulp-order": "^1.2.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-strip-css-comments": "^2.0.0",
+        "gulp-strip-debug": "^3.0.0",
+        "jshint": "^2.10.2",
+        "minimist": "^1.2.0",
+        "sass": "^1.22.10"
+    }
+}
