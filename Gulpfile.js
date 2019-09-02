@@ -307,5 +307,5 @@ exports.help = help;
 exports.setup = series(main, setup, parallel(syncFiles,styles, scripts));
 exports.default = series(main,parallel(syncFiles,styles, scripts));
 exports.sync = syncFiles;
-exports.clean = clean;
+exports.clean = series(clean, syncFiles,styles, scripts);
 exports.watch = series(main, watcher);
