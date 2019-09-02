@@ -70,4 +70,23 @@ The setup process will generate the following tree structure:
 	|	└── README.md
 ```
 
-https://editorconfig.org/
+### Tasks
+Bellow is a list of tasks available:
+
+#### - `gulp help`
+This will display a list of tasks in gulp and how to use them
+
+#### - `gulp setup`
+This will run the setup process, creating the working tree structure and running the compilers for the first time
+
+#### - `gulp`
+This will run the compilers for the Sass and javascript once, synchronizing the files between `src` and `dist/build`.
+
+#### - `gulp syncfiles`
+This will synchronize the files from `src` to `dist/build`, this only syncs files in one direction from `src`.
+
+#### - `gulp clean`
+This will clean the contents of the `build/dist` folder running the standard gulp task afterwards.
+
+#### - `gulp watch`
+This will watch for changes in the `src` folder, and run the tasks depending on the file type that has changed.
