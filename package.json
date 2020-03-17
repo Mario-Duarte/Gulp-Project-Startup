@@ -39,7 +39,7 @@
         "gulp-strip-css-comments": "^2.0.0",
         "gulp-strip-debug": "^3.0.0",
         "jshint": "^2.10.2",
-        "minimist": "^1.2.0",
+        "minimist": "^1.2.2",
         "sass": "^1.22.10"
     }
 }
