@@ -23,6 +23,8 @@ const fileSync = require('gulp-file-sync');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const concat = require('gulp-concat');
+const gls = require('gulp-live-server');
+let server;
 
 // Setup directories object
 const dir = {
@@ -124,23 +126,19 @@ const templates = {
 }
 
 function help(cb) {
-	log(colors.red(`This is a test log: Hello World!`));
-	log(colors.blue(`This is a test log: Hello World!`));
-	log(colors.yellow(`This is a test log: Hello World!`));
-	log(colors.green(`This is a test log: Hello World!`));
-	log(colors.bgRed.black(`This is a test log: Hello World!`));
-	log(colors.bgBlue.black(`This is a test log: Hello World!`));
-	log(colors.bgYellow.black(`This is a test log: Hello World!`));
-	log(colors.bgGreen.black(`This is a test log: Hello World!`));
-	log(colors.dim.red(`This is a test log: Hello World!`));
-	log(colors.dim.blue(`This is a test log: Hello World!`));
-	log(colors.dim.yellow(`This is a test log: Hello World!`));
-	log(colors.dim.green(`This is a test log: Hello World!`));
-	log(colors.dim.bgRed.black(`This is a test log: Hello World!`));
-	log(colors.dim.bgBlue.black(`This is a test log: Hello World!`));
-	log(colors.dim.bgYellow.black(`This is a test log: Hello World!`));
-	log(colors.dim.bgGreen.black(`This is a test log: Hello World!`));
+	log(colors.bgBlue.white(`You current source folder is set to: '${dir.input}' and your output to: '${dir.output}'`));
+	log(colors.bgBlue.white(`To setup the project folder use the command: 'gulp setup'`));
+	log(colors.bgBlue.white(`To build from the src use the command: 'gulp'`));
+	log(colors.bgBlue.white(`To sync the files from the src use the command: 'gulp sync'`));
+	log(colors.bgBlue.white(`To clear the output folder use the command: 'gulp clean'`));
+	log(colors.bgBlue.white(`To watch the files from the src use the command: 'gulp watch'`));
+	log(colors.bgBlue.white(`To launch the live server from '${dir.output}'  use the command: 'gulp serve'`));
 	cb();
+}
+
+function serve(cb) {
+	server = gls.static(dir.output, 3000);
+    server.start();
 }
 
 function setup(cb) {
@@ -300,6 +298,7 @@ function watcher(cb) {
 	watch(dir.inputScripts + '**/*.js', scripts);
 	watch(dir.inputStyles + '**/*.scss', styles);
 	watch(dir.inputHtml + '**/*', syncFiles);
+
 	cb();
 }
 
@@ -307,5 +306,6 @@ exports.help = help;
 exports.setup = series(main, setup, parallel(syncFiles,styles, scripts));
 exports.default = series(main,parallel(syncFiles,styles, scripts));
 exports.sync = syncFiles;
+exports.live = series(main, parallel(syncFiles,styles, scripts), serve);
 exports.clean = series(clean, syncFiles,styles, scripts);
-exports.watch = series(main, watcher);
+exports.watch = series(main, watcher, serve);
