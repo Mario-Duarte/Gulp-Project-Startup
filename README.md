@@ -82,7 +82,7 @@ This will run the setup process, creating the working tree structure and running
 #### - `gulp`
 This will run the compilers for the Sass and javascript once, synchronizing the files between `src` and `dist/build`.
 
-#### - `gulp syncfiles`
+#### - `gulp sync`
 This will synchronize the files from `src` to `dist/build`, this only syncs files in one direction from `src`.
 
 #### - `gulp clean`
@@ -90,3 +90,6 @@ This will clean the contents of the `build/dist` folder running the standard gul
 
 #### - `gulp watch`
 This will watch for changes in the `src` folder, and run the tasks depending on the file type that has changed.
+
+#### - `gulp serve`
+This will launch the live server to the current set output foler
