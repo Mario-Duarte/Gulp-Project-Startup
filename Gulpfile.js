@@ -23,8 +23,8 @@ const fileSync = require('gulp-file-sync');
 const log = require('fancy-log');
 const colors = require('ansi-colors');
 const concat = require('gulp-concat');
-const gls = require('gulp-live-server');
-let server;
+const browserSync = require('browser-sync').create();
+const reload = browserSync.reload;
 
 // Setup directories object
 const dir = {
@@ -132,13 +132,7 @@ function help(cb) {
 	log(colors.bgBlue.white(`To sync the files from the src use the command: 'gulp sync'`));
 	log(colors.bgBlue.white(`To clear the output folder use the command: 'gulp clean'`));
 	log(colors.bgBlue.white(`To watch the files from the src use the command: 'gulp watch'`));
-	log(colors.bgBlue.white(`To launch the live server from '${dir.output}'  use the command: 'gulp serve'`));
 	cb();
-}
-
-function serve(cb) {
-	server = gls.static(dir.output, 3000);
-    server.start();
 }
 
 function setup(cb) {
@@ -299,13 +293,25 @@ function watcher(cb) {
 	watch(dir.inputStyles + '**/*.scss', styles);
 	watch(dir.inputHtml + '**/*', syncFiles);
 
+	if (argv.live) {
+		watch(dir.output, reload);
+	}
+
 	cb();
+}
+
+if (argv.live) {
+	browserSync.init({
+		server: {
+            baseDir: "./build"
+        },
+		notify: true
+	});
 }
 
 exports.help = help;
 exports.setup = series(main, setup, parallel(syncFiles,styles, scripts));
 exports.default = series(main,parallel(syncFiles,styles, scripts));
 exports.sync = syncFiles;
-exports.live = series(main, parallel(syncFiles,styles, scripts), serve);
 exports.clean = series(clean, syncFiles,styles, scripts);
-exports.watch = series(main, parallel(syncFiles,styles, scripts), watcher, serve);
+exports.watch = series(main, parallel(syncFiles,styles, scripts), watcher);
