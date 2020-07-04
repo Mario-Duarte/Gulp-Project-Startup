@@ -248,8 +248,8 @@ function main(cb) {
 
 function syncFiles(cb) {
 	fileSync(dir.inputHtml, dir.output, {
-		recursive: true,
-		ignore: []
+		recursive: false,
+		ignore: ['css/*', 'js/*']
 	})
 	cb();
 }
@@ -308,4 +308,4 @@ exports.default = series(main,parallel(syncFiles,styles, scripts));
 exports.sync = syncFiles;
 exports.live = series(main, parallel(syncFiles,styles, scripts), serve);
 exports.clean = series(clean, syncFiles,styles, scripts);
-exports.watch = series(main, watcher, serve);
+exports.watch = series(main, parallel(syncFiles,styles, scripts), watcher, serve);

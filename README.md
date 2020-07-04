@@ -92,4 +92,4 @@ This will clean the contents of the `build/dist` folder running the standard gul
 This will watch for changes in the `src` folder, and run the tasks depending on the file type that has changed.
 
 #### - `gulp live`
-This will launch the live server to the current set output foler
+This will launch the live server to the current set output folder
