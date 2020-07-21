@@ -242,8 +242,8 @@ function main(cb) {
 
 function syncFiles(cb) {
 	fileSync(dir.inputHtml, dir.output, {
-		recursive: false,
-		ignore: ['css/*', 'js/*']
+		recursive: true,
+		ignore: ['js', 'css']
 	})
 	cb();
 }
