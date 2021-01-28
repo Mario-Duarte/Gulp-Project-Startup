@@ -3,6 +3,8 @@
 Hit the ground running with this project startup with all the tools you need to start developing web pages in time.
 *I developed this to help me save time, and this tool was built with my workflow in mind so feel free to modify it to fit your workflow needs
 
+<a href="https://www.buymeacoffee.com/marioduarte"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&emoji=&slug=marioduarte&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"></a><br/>
+
 ## Dependencies
 
 - [nodejs](https://nodejs.org/en/)
